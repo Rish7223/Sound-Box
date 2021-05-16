@@ -18,8 +18,8 @@ export const Preview = styled.div`
   border-radius: 50%;
   background: #ddd;
   background-image: url('${props => props.image}');
-  background-size: cover;
-  background-position: center;
+  background-size: 150%;
+  background-position: left;
   box-shadow: 0 0 3px #212949;
   animation: ${rotate} 10s linear
     ${props => (props.play ? 'running' : 'paused')} infinite;
@@ -40,8 +40,8 @@ export const Preview = styled.div`
   &::after {
     content: '';
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     border-radius: 50%;
     background-color: #222222;
     top: 50%;

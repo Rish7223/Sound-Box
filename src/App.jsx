@@ -1,18 +1,13 @@
 import { useRef } from 'react';
 import { Player } from './components/Block/Player';
-import { PlayButton } from './components/UI/Button';
+import { NextButton, PlayButton, PrevButton } from './components/UI/Button';
 import { Preview } from './components/UI/Preview';
 import { ProgressBar } from './components/UI/ProgressBar';
 import usePlayer from './hooks/usePlayer';
-import Song from './songs/Dil-Bechara-Khulke-Jeene-Ka.mp3';
+import { songList } from './songs/index';
 
 const App = () => {
   const song = useRef(null);
-  const skipSong = () => {
-    if (song.current) {
-      song.current.currentTime += 5;
-    }
-  };
 
   const pauseButton = (
     <svg
@@ -43,12 +38,20 @@ const App = () => {
       />
     </svg>
   );
-  const { togglePlay, stopSong, playing, processTime, processPercentage } =
-    usePlayer(song);
+  const {
+    togglePlay,
+    playing,
+    processTime,
+    processPercentage,
+    playingSong,
+    nextSong,
+    prevSong,
+    durationTime
+  } = usePlayer(song, songList);
   return (
     <>
       <div className="App">
-        <audio src={Song} ref={song} />
+        <audio src={playingSong && playingSong.song} ref={song} />
 
         <Player>
           <section
@@ -58,7 +61,7 @@ const App = () => {
             }}
           >
             <Preview
-              image="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fG11c2ljfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              image={playingSong && playingSong.thumbnail}
               play={playing}
             />
           </section>
@@ -71,10 +74,11 @@ const App = () => {
             <h1
               style={{
                 color: '#f3fbfb',
-                fontSize: '2.5rem'
+                fontSize: '2.5rem',
+                textAlign: 'center'
               }}
             >
-              Khulke Jeene Ka
+              {playingSong && playingSong.title}
             </h1>
             <p
               style={{
@@ -83,25 +87,42 @@ const App = () => {
                 textAlign: 'center'
               }}
             >
-              by - Arijit Singh
+              By - {playingSong && playingSong.artist}
             </p>
           </section>
           <section
             style={{
               width: '100%',
-              marginTop: '5rem'
+              marginTop: '3rem'
             }}
           >
+            <section
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                color: '#f3fbfb',
+                fontSize: '1.4rem',
+                marginBottom: '0.5rem'
+              }}
+            >
+              <p>{processTime}</p>
+              <p>{durationTime}</p>
+            </section>
             <ProgressBar completed={processPercentage} />
           </section>
           <section
             style={{
-              marginTop: '3rem'
+              marginTop: '3rem',
+              display: 'flex',
+              alignItems: 'center'
             }}
           >
+            <PrevButton onClick={prevSong} />
             <PlayButton onClick={togglePlay}>
               {playing ? pauseButton : playButton}
             </PlayButton>
+            <NextButton onClick={nextSong} />
           </section>
         </Player>
       </div>

@@ -2,7 +2,7 @@
   --black-color: #000000;
   --white-color: #ffffff;
   --gray-color: #888888;
-  --primary-color: #242e4c;
+  --primary-color: #212949;
   --secondary-color: #f76faf;
   --primaryDark-color: #212949;
   --text-color: #f3fbfb;
@@ -49,4 +49,6 @@ a:visited {
   position: absolute;
   height: 100%;
   background-color: #9944ff;
+  background-size: cover;
+  background-position: center;
 }
