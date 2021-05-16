@@ -1,5 +1,4 @@
 {
-  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
@@ -7,19 +6,33 @@
       "jsx": true
     }
   },
-  "rules": {
-    "no-console": "error",
-    "sort-imports": "error"
-  },
   "env": {
     "browser": true,
     "node": true,
     "es6": true
   },
+  "plugins": ["simple-import-sort"],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "plugins": ["react", "prettier"]
+  "extends": [
+    "eslint:recommended",
+    // "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended",
+    // "plugin:unicorn/recommended",
+    "plugin:security/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "simple-import-sort/sort": "off",
+    "unicorn/filename-case": "off",
+    "no-unused-vars": "warn"
+  }
 }
