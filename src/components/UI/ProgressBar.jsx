@@ -30,7 +30,7 @@ export const ProgressBar = styled.div`
     position: absolute;
     top: 0;
     transform: translateY(-25%);
-    left: ${props => (props.completed ? props.completed - 2 : '-2')}%;
+    left: ${props => (props.completed ? props.completed - 2 : '-2 ')}%;
     z-index: 100;
   }
 `;

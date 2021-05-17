@@ -4,6 +4,12 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   background-color: transparent;
+  font-size: 4rem;
+  font-weight: 600;
+  color: #f3fbfb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const PlayButton = styled.button`
@@ -36,18 +42,9 @@ export const PlayButton = styled.button`
   }
 `;
 
-export const Next = styled(Button)`
-  font-size: 4rem;
-  font-weight: 600;
-  color: #f3fbfb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export const NextButton = ({ onClick }) => {
   return (
-    <Next
+    <Button
       onClick={() => {
         onClick();
       }}
@@ -65,13 +62,13 @@ export const NextButton = ({ onClick }) => {
           clipRule="evenodd"
         />
       </svg>
-    </Next>
+    </Button>
   );
 };
 
 export const PrevButton = ({ onClick }) => {
   return (
-    <Next
+    <Button
       onClick={() => {
         onClick();
       }}
@@ -89,6 +86,6 @@ export const PrevButton = ({ onClick }) => {
           clipRule="evenodd"
         />
       </svg>
-    </Next>
+    </Button>
   );
 };

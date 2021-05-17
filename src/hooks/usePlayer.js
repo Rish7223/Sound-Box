@@ -4,7 +4,7 @@ const usePlayer = (songRef, songList) => {
   const currentRef = songRef;
   const [playingSong, setPlayingSong] = useState(null);
   const [processTime, setProcessTime] = useState('0:00');
-  const [durationTime, setDurationTime] = useState('0:00');
+  const [durationTime, setDurationTime] = useState('');
   const [processPercentage, setProcessPercentage] = useState(0);
 
   const [playing, setPlaying] = useState(false);
@@ -69,8 +69,6 @@ const usePlayer = (songRef, songList) => {
       playSong();
     }
   };
-
-  // console.log(playingSong);
 
   const nextSong = () => {
     const index = playingSong && playingSong.id + 1;
