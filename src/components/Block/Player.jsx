@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NextButton, PlayButton, PrevButton } from '../UI/Button';
-import { ProgressBar } from '../UI/ProgressBar';
+import ProgressBar from '../UI/ProgressBar';
 import { Preview } from '../UI/Preview';
 import PropTypes from 'prop-types';
 import { Heading, Paragraph } from '../UI/Typography';
@@ -52,7 +52,8 @@ const PlayerBox = ({ options }) => {
     processPercentage,
     prevSong,
     nextSong,
-    togglePlay
+    togglePlay,
+    skipSong
   } = options;
 
   const pauseButton = (
@@ -87,12 +88,7 @@ const PlayerBox = ({ options }) => {
   return (
     <Player>
       <section className="nothing"></section>
-      <section
-        style={{
-          width: '200px',
-          height: '200px'
-        }}
-      >
+      <section>
         <Preview image={playingSong && playingSong.thumbnail} play={playing} />
       </section>
 
@@ -109,7 +105,7 @@ const PlayerBox = ({ options }) => {
       <section
         style={{
           width: '100%',
-          marginTop: '3rem'
+          marginTop: '2rem'
         }}
       >
         <section
@@ -125,7 +121,10 @@ const PlayerBox = ({ options }) => {
           <Paragraph size="1.5">{processTime}</Paragraph>
           <Paragraph size="1.5">{durationTime}</Paragraph>
         </section>
-        <ProgressBar completed={processPercentage} />
+        <ProgressBar
+          processPercentage={processPercentage}
+          skipSong={skipSong}
+        />
       </section>
       <section
         style={{

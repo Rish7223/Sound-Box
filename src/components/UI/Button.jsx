@@ -10,6 +10,25 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: #21294900;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+
+  & > * {
+    z-index: 10;
+  }
+
+  &:hover::before {
+    background-color: #21294944;
+  }
 `;
 
 export const PlayButton = styled.button`

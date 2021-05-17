@@ -4,7 +4,7 @@ This is music player designed to learn styled-components and audio functionality
 
 ## pic/gif
 
-![image](./ProjectImg/FirstB1.PNG);
+![image](./ProjectImg/FirstB1.PNG)
 
 # Getting Started with Create React App
 

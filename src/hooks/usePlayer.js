@@ -70,6 +70,13 @@ const usePlayer = (songRef, songList) => {
     }
   };
 
+  const skipSong = time => {
+    if (currentRef.current) {
+      const skipValue = (currentRef.current.duration / 100) * time;
+      currentRef.current.currentTime = skipValue;
+    }
+  };
+
   const nextSong = () => {
     const index = playingSong && playingSong.id + 1;
     if (index > songList.length) {
@@ -97,7 +104,8 @@ const usePlayer = (songRef, songList) => {
     playingSong,
     nextSong,
     prevSong,
-    durationTime
+    durationTime,
+    skipSong
   };
 };
 

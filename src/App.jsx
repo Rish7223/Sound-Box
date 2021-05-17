@@ -14,7 +14,8 @@ const App = () => {
     playingSong,
     nextSong,
     prevSong,
-    durationTime
+    durationTime,
+    skipSong
   } = usePlayer(song, songList);
   return (
     <>
@@ -29,7 +30,8 @@ const App = () => {
             playingSong,
             nextSong,
             prevSong,
-            durationTime
+            durationTime,
+            skipSong
           }}
         />
       </div>

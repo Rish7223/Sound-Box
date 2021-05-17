@@ -13,8 +13,8 @@ const rotate = keyframes`
 
 export const Preview = styled.div`
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   background: #ddd;
   background-image: url('${props => props.image}');
